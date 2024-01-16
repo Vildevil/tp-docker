@@ -11,3 +11,8 @@ services:
     build: ./monitoring
     volumes:
       - ./data:/servlog
+
+  request:
+    image: radial/busyboxplus:curl
+    command: curl http://webapp
+    restart: always
