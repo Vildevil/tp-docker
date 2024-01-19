@@ -3,16 +3,25 @@ services:
   webapp:
     build: ./webapp
     ports:
-      - 80:80
+      - 7000:80
     volumes:
-      - ./data:/var/log/nginx/
+      - logs:/var/log/nginx/
   
   monitoring:
     build: ./monitoring
     volumes:
+<<<<<<< HEAD
       - ./data:/servlog
 
   request:
     image: radial/busyboxplus:curl
     command: curl http://webapp
     restart: always
+=======
+      - logs:/servlog
+    depends_on:
+      - webapp
+
+volumes:
+  logs:
+>>>>>>> 994cabe (Simplify docker files)

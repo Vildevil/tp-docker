@@ -1,13 +1,7 @@
-FROM ubuntu:22.04
+FROM bash:latest
 WORKDIR /var
+COPY monitor.sh .
 
-RUN mkdir /servlog
-VOLUME /servlog
-
-COPY ./monitor.sh .
 RUN chmod +x monitor.sh
 
-CMD ["/bin/dash", "/var/monitor.sh"]
-
-
-
+ENTRYPOINT [ "/bin/bash", "/var/monitor.sh" ]
